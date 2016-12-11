@@ -26,7 +26,7 @@ export SHARE_DIR="/opt/docker_data/NOD32MIRROR" && mkdir -p $SHARE_DIR
 ##Запускаем
 Для корректной работы CommunigatePro необходим статический адрес, поэтому создаем сеть docker
 ```shell
-docker network create --subnet 192.168.1.0/24 --gateway 192.168.1.1 CommunigatePro
+docker network create --subnet 192.168.1.0/24 --gateway 192.168.1.1 CommunigatePro_net
 ```
 Данные будем хранить в каталоге
 ```shell
@@ -42,7 +42,7 @@ docker run --name CommunigatePro \
 --ulimit nproc=2048:2048 \
 -di --restart=always \
 -h communigategate \
---net CommunigatePro \
+--net CommunigatePro_net \
 --ip="192.168.1.5" \
 -v $SHARE_DIR:/var/CommuniGate/ \
 -p $ip_addr:8010:8010 \
@@ -54,7 +54,7 @@ docker run --name CommunigatePro \
 -p $ip_addr:465:465 \
 -p $ip_addr:5222:5222 \
 -p $ip_addr:9102:9102 \
--d ershov/cgp
+-d ershov/communigatepro
 ```
 ##Настройка
 Все настройки производятся через web интерфейс http://$ip_addr
