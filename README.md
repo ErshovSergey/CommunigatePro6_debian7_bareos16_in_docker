@@ -14,6 +14,13 @@ Debian 7 обновляется, устанавливается та верси�
 ```shell
 git clone https://github.com/ErshovSergey/CommunigatePro6_debian7_bareos16_in_docker.git
 ```
+## Скачать пакет CommuniGatePro
+Последние версии можно посмотреть на # http://mail.stalker.com/guide/russian/default.html#Current  
+Актуальные версии доступны на   ftp://ftp.communigate.com/pub/CommuniGatePro/  
+# http://www.stalker.com/pub/CommuniGatePro/
+положить выбранную версию возле Dockerfile
+
+
 ## Собираем  
 ```shell
 cd nod32-mirror/
