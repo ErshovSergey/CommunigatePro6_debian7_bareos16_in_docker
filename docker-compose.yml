@@ -1,29 +1,15 @@
 version: '2.1'
-#networks:
-#  CommunigatePro_net:
-#    driver: bridge
-#    driver_opts:
-#      com.docker.network.enable_ipv6: "false"
-#    ipam:
-#      driver: default
-#      config:
-#      - subnet: 10.50.18.0/24
-#        gateway: 10.50.18.254
 
 services:
-#  froxlor-data:
   communigatepro-data:
     network_mode: host
     image: busybox
     container_name: "${DOMAIN_NAME}_communigatepro-data"
     volumes:
       - "${DATA_PATH}:/var/CommuniGate"
-#      - "${DATA_PATH}/mariadb-data:/var/lib/mysql"
-#      - "${DATA_PATH}/client_bareos:/etc/bareos"
 
   communigatepro:
     environment:
-#       - HTTP_SERVER=${HTTP_SERVER}
        - "TZ=${TIMEZONE}"
     build:
       context: ./CommunigatePro/
@@ -34,11 +20,6 @@ services:
     volumes_from:
       - communigatepro-data
     container_name: "${DOMAIN_NAME}_cgp"
-#    ports:
-#      -  "${HTTP_IP}:${HTTP_PORT}:80"
-#      -  "${HTTP_IP}:${HTTPS_PORT}:443"
-#      -  "${HTTP_IP}:${PORT_SFTP}:21"
-#      -  "${HTTP_IP}:${BAREOSFD_PORT}:9102"
     depends_on:
       - communigatepro-data
     restart: always
@@ -46,3 +27,4 @@ services:
 #      driver: none
 
 
+    network_mode: "host"
